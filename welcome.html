@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome — Smart DT Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/smartdt-guide.css">
+<style>
+  /* welcome-only layout */
+  .welcome{
+    min-height:100vh; display:flex; flex-direction:column;
+    padding: 28px var(--page-x) calc(28px + env(safe-area-inset-bottom));
+    max-width:520px; margin:0 auto; text-align:center;
+  }
+  .welcome-logo{ margin:12px auto 0; }
+  .welcome-logo img{ width:min(300px,72vw); height:auto; display:block; }
+  .welcome-tag{
+    font-size:clamp(16px,4.4vw,19px); font-weight:600; line-height:1.5;
+    color:var(--muted); margin:14px auto 0; max-width:380px;
+  }
+  .welcome-tag b{ color:var(--teal); font-weight:800; }
+
+  .hero-photo{
+    margin:26px auto 0; width:100%; border-radius:var(--r-xl);
+    overflow:hidden; position:relative; border:1px solid var(--line);
+    box-shadow:var(--shadow), var(--glow-purple);
+    aspect-ratio:4/5; background:var(--panel-2);
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .hero-photo:after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, transparent 55%, rgba(12,15,26,.55) 100%);
+  }
+  .hero-fallback{
+    position:absolute; inset:0; display:grid; place-items:center;
+    background:var(--grad-hero); color:#fff; font-weight:800; font-size:15px; text-align:center; padding:20px;
+  }
+
+  /* mini phase preview strip */
+  .phase-preview{ display:flex; justify-content:center; gap:10px; margin:22px auto 0; flex-wrap:wrap; }
+  .pp{ display:flex; flex-direction:column; align-items:center; gap:5px; width:58px; }
+  .pp .d{ width:42px; height:42px; border-radius:50%; display:grid; place-items:center; font-size:18px; background:var(--panel-2); border:2px solid var(--line); }
+  .pp.p1 .d{ border-color:var(--teal); } .pp.p2 .d{ border-color:var(--electric); }
+  .pp.p3 .d{ border-color:var(--purple); } .pp.p4 .d{ border-color:var(--pink); }
+  .pp.p5 .d{ border-color:var(--orange); }
+  .pp span{ font-size:10px; font-weight:700; color:var(--faint); }
+
+  .welcome-actions{ margin-top:auto; padding-top:26px; }
+  .welcome-actions .btn{ margin-bottom:10px; }
+  .signin-line{ font-size:14px; color:var(--muted); font-weight:600; margin-top:6px; }
+  .signin-line a{ font-weight:800; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="welcome">
+
+    <div class="welcome-logo">
+      <img src="assets/brand/logo-full.png" alt="Smart DT Guide"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{innerHTML:'<span style=&quot;font-weight:900;font-size:30px&quot;><span style=&quot;color:var(--orange)&quot;>Smart</span> <span style=&quot;color:var(--teal)&quot;>DT</span> <span style=&quot;color:var(--yellow)&quot;>Guide</span></span>'}))">
+    </div>
+
+    <p class="welcome-tag">From empathy to pitch. Master <b>Design Thinking</b>, one phase at a time.</p>
+
+    <div class="hero-photo">
+      <img src="assets/img/welcome-hero.png" alt="Students in a Design Thinking workshop"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <div class="hero-fallback" style="display:none">Workshop photo goes here<br><span style="opacity:.8;font-weight:600">(assets/img/welcome-hero.png)</span></div>
+    </div>
+
+    <div class="phase-preview">
+      <div class="pp p1"><div class="d">🔍</div><span>Empathise</span></div>
+      <div class="pp p2"><div class="d">🎯</div><span>Define</span></div>
+      <div class="pp p3"><div class="d">💡</div><span>Ideate</span></div>
+      <div class="pp p4"><div class="d">🛠️</div><span>Prototype</span></div>
+      <div class="pp p5"><div class="d">🧪</div><span>Test</span></div>
+    </div>
+
+    <div class="welcome-actions">
+      <a class="btn primary" href="registration.html">Get started →</a>
+      <p class="signin-line">Already have an account? <a href="login.html">Sign in</a></p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
