@@ -1,0 +1,328 @@
+/* ============================================================
+   SMART DT GUIDE — MASTER DESIGN SYSTEM  (v1, Jul 2026)
+   File: css/smartdt-guide.css
+
+   THE single source of truth for the new Smart DT Guide app.
+   Dark, vibrant tech theme with gradient screens.
+   Palette + type extracted from the master UI kit.
+
+   HOW TO USE ON A NEW PAGE:
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="css/smartdt-guide.css">
+
+   RULES:
+   - Never hardcode a color, radius, or shadow in a page. Use tokens.
+   - New pages compose from the components below. No inline <style>
+     blocks except for genuinely one-off page structure.
+   - This file replaces the whole patch cycle: change once here,
+     every page updates.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. DESIGN TOKENS
+   ------------------------------------------------------------ */
+:root{
+  /* Brand core (from logo) */
+  --orange:  #F5811F;   /* "Smart" — primary CTA, energy */
+  --teal:    #12C7CE;   /* "DT" — links, active, success */
+  --yellow:  #FBB80A;   /* "Guide" — highlights, badges */
+
+  /* Tech accents */
+  --electric:#3A7BFF;   /* electric blue — primary actions */
+  --purple:  #6B47F5;   /* purple — secondary, gradients */
+  --pink:    #E24CC4;   /* magenta pop — gradient end, alerts */
+  --green:   #2FD07B;   /* positive / online */
+
+  /* Dark surfaces */
+  --ink:     #0C0F1A;   /* app background, deepest */
+  --panel:   #141826;   /* cards / panels */
+  --panel-2: #1C2133;   /* raised panel, inputs */
+  --line:    #2A3047;   /* borders on dark */
+  --line-soft:#222840;
+
+  /* Text on dark */
+  --text:    #EEF1FA;   /* primary text */
+  --muted:   #98A0BC;   /* secondary text */
+  --faint:   #5E6784;   /* captions, disabled */
+
+  /* Signature gradients */
+  --grad-hero:   linear-gradient(135deg, #6B47F5 0%, #3A7BFF 55%, #12C7CE 100%);
+  --grad-purple: linear-gradient(135deg, #6B47F5 0%, #E24CC4 100%);
+  --grad-teal:   linear-gradient(135deg, #12C7CE 0%, #3A7BFF 100%);
+  --grad-warm:   linear-gradient(135deg, #F5811F 0%, #FBB80A 100%);
+  --grad-panel:  linear-gradient(160deg, #1C2133 0%, #141826 100%);
+
+  /* Typography */
+  --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Elevation (dark theme = glow + depth, not soft grey) */
+  --shadow:      0 18px 40px rgba(0,0,0,.45);
+  --shadow-soft: 0 10px 24px rgba(0,0,0,.35);
+  --glow-teal:   0 10px 30px rgba(18,199,206,.28);
+  --glow-purple: 0 10px 30px rgba(107,71,245,.30);
+  --glow-orange: 0 10px 30px rgba(245,129,31,.28);
+
+  /* Radii */
+  --r-xl: 30px;  --r-lg: 24px;  --r-md: 18px;
+  --r-sm: 14px;  --r-pill: 999px;
+
+  /* Shell sizing */
+  --header-h: 68px;
+  --nav-h:    76px;
+  --page-x:   20px;
+  --maxw:     1180px;
+}
+@media (min-width:1024px){
+  :root{ --page-x:32px; --header-h:72px; --nav-h:84px; }
+}
+
+/* ------------------------------------------------------------
+   2. BASE
+   ------------------------------------------------------------ */
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{
+  -webkit-text-size-adjust:100%; text-size-adjust:100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+body{
+  font-family:var(--font);
+  color:var(--text);
+  min-width:320px;
+  overflow-x:hidden;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(107,71,245,.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(18,199,206,.12), transparent 55%),
+    var(--ink);
+  background-attachment:fixed;
+}
+.app{ width:100%; max-width:var(--maxw); margin:0 auto; min-height:100vh; }
+::selection{ background:rgba(58,123,255,.35); }
+a{ color:var(--teal); text-decoration:none; }
+
+/* ------------------------------------------------------------
+   3. HEADER (sticky, glass on dark)
+   ------------------------------------------------------------ */
+.header{
+  height:var(--header-h); padding:0 var(--page-x);
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:40;
+  background:rgba(12,15,26,.72);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.brand{ display:flex; align-items:center; gap:10px; min-width:0; }
+.brand-logo img{ height:38px; width:auto; display:block; }
+.brand-text{ font-weight:900; font-size:17px; letter-spacing:-.01em; }
+.brand-text .s{ color:var(--orange); }
+.brand-text .d{ color:var(--teal); }
+.brand-text .g{ color:var(--yellow); }
+.header-actions{ display:flex; align-items:center; gap:10px; }
+.icon-btn{
+  width:44px; height:44px; border-radius:var(--r-pill);
+  background:var(--panel-2); border:1px solid var(--line);
+  display:grid; place-items:center; color:var(--text); font-size:18px; cursor:pointer;
+}
+.avatar{
+  width:44px; height:44px; border-radius:var(--r-pill);
+  background:var(--grad-teal); display:grid; place-items:center;
+  font-weight:900; color:#04121a; box-shadow:var(--glow-teal);
+}
+
+/* ------------------------------------------------------------
+   4. PAGE CONTAINER
+   ------------------------------------------------------------ */
+.page{
+  width:100%;
+  padding: 20px var(--page-x)
+           calc(var(--nav-h) + 28px + env(safe-area-inset-bottom));
+}
+.page.no-nav{ padding-bottom:40px; }
+.section{ margin:26px 0; }
+.section-eyebrow{
+  font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:8px;
+}
+.section-title{ font-size:clamp(22px,3vw,30px); font-weight:900; letter-spacing:-.02em; }
+.section-sub{ color:var(--muted); font-size:14.5px; line-height:1.55; margin-top:6px; }
+
+/* ------------------------------------------------------------
+   5. HERO CARD (signature — gradient guide screen)
+   ------------------------------------------------------------ */
+.hero{
+  position:relative; overflow:hidden;
+  border-radius:var(--r-xl); padding:28px 24px;
+  background:var(--grad-hero);
+  box-shadow:var(--shadow), var(--glow-purple);
+}
+.hero:before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(420px 200px at 90% 0%, rgba(255,255,255,.22), transparent 60%);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,.16); color:#fff;
+  font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  padding:7px 14px; border-radius:var(--r-pill); margin-bottom:14px;
+  backdrop-filter:blur(6px);
+}
+.hero-eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:var(--yellow); }
+.hero h1{
+  color:#fff; font-size:clamp(28px,5vw,40px); font-weight:900;
+  line-height:1.08; letter-spacing:-.03em; position:relative;
+}
+.hero p{ color:rgba(255,255,255,.9); font-size:15.5px; line-height:1.55; margin-top:12px; max-width:600px; position:relative; }
+
+/* ------------------------------------------------------------
+   6. CARDS
+   ------------------------------------------------------------ */
+.card{
+  background:var(--grad-panel); border:1px solid var(--line);
+  border-radius:var(--r-lg); padding:20px; box-shadow:var(--shadow-soft);
+  margin-bottom:14px;
+}
+.card-glow-teal{   box-shadow:var(--shadow-soft), var(--glow-teal);   border-color:rgba(18,199,206,.35); }
+.card-glow-purple{ box-shadow:var(--shadow-soft), var(--glow-purple); border-color:rgba(107,71,245,.35); }
+.card-glow-orange{ box-shadow:var(--shadow-soft), var(--glow-orange); border-color:rgba(245,129,31,.35); }
+.card h3{ font-size:19px; font-weight:800; margin-bottom:6px; }
+.card p{ color:var(--muted); font-size:14.5px; line-height:1.55; }
+
+/* Gradient feature card (Style-2 mockup look) */
+.feature-card{
+  border-radius:var(--r-lg); padding:22px; color:#fff; position:relative; overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.feature-card.purple{ background:var(--grad-purple); }
+.feature-card.teal{   background:var(--grad-teal); }
+.feature-card.warm{   background:var(--grad-warm); color:#1a1200; }
+.feature-card h3{ font-size:20px; font-weight:900; margin-bottom:6px; }
+.feature-card p{ font-size:14px; line-height:1.5; opacity:.94; }
+
+/* ------------------------------------------------------------
+   7. BUTTONS
+   ------------------------------------------------------------ */
+.btn{
+  border:0; border-radius:var(--r-pill); min-height:52px; padding:0 22px;
+  font-family:var(--font); font-weight:800; font-size:15px; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; color:#fff; background:var(--electric);
+  box-shadow:0 10px 24px rgba(58,123,255,.32); transition:transform .15s, box-shadow .15s, filter .15s;
+}
+.btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
+.btn:active{ transform:translateY(0); }
+.btn.primary{ background:var(--grad-hero); box-shadow:var(--glow-purple); }
+.btn.orange{  background:var(--orange); box-shadow:var(--glow-orange); }
+.btn.teal{    background:var(--teal); color:#04121a; box-shadow:var(--glow-teal); }
+.btn.ghost{   background:transparent; border:1.5px solid var(--line); color:var(--text); box-shadow:none; }
+.btn.sm{ min-height:42px; font-size:14px; padding:0 16px; width:auto; }
+.btn:disabled{ opacity:.4; cursor:not-allowed; transform:none; filter:none; }
+
+/* ------------------------------------------------------------
+   8. PILLS / BADGES / CHIPS
+   ------------------------------------------------------------ */
+.pill{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 13px; border-radius:var(--r-pill);
+  font-size:12.5px; font-weight:800; letter-spacing:.02em;
+  background:var(--panel-2); border:1px solid var(--line); color:var(--muted);
+}
+.pill.teal{   background:rgba(18,199,206,.14); color:var(--teal);   border-color:rgba(18,199,206,.4); }
+.pill.purple{ background:rgba(107,71,245,.16); color:#b9a6ff;       border-color:rgba(107,71,245,.4); }
+.pill.orange{ background:rgba(245,129,31,.14); color:var(--orange); border-color:rgba(245,129,31,.4); }
+.pill.green{  background:rgba(47,208,123,.14); color:var(--green);  border-color:rgba(47,208,123,.4); }
+
+.chip-row{ display:flex; gap:8px; flex-wrap:wrap; }
+.chip{
+  border:1px solid var(--line); background:var(--panel-2); color:var(--muted);
+  border-radius:var(--r-pill); padding:10px 16px; font-weight:800; font-size:14px; cursor:pointer;
+}
+.chip.active{ background:var(--grad-teal); color:#04121a; border-color:transparent; box-shadow:var(--glow-teal); }
+
+/* ------------------------------------------------------------
+   9. PHASE TIMELINE (signature Style-2 element)
+   5 DT phases, each a colored node on a connecting track.
+   ------------------------------------------------------------ */
+.timeline{ position:relative; padding:8px 0; }
+.timeline-track{ display:flex; justify-content:space-between; position:relative; }
+.timeline-track:before{
+  content:""; position:absolute; left:6%; right:6%; top:26px; height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--electric),var(--purple),var(--pink),var(--orange));
+  border-radius:3px; opacity:.5;
+}
+.tl-node{ display:flex; flex-direction:column; align-items:center; gap:8px; position:relative; z-index:1; flex:1; }
+.tl-dot{
+  width:52px; height:52px; border-radius:50%; display:grid; place-items:center;
+  font-size:22px; background:var(--panel-2); border:2px solid var(--line);
+}
+.tl-node.p1 .tl-dot{ border-color:var(--teal);     box-shadow:var(--glow-teal); }
+.tl-node.p2 .tl-dot{ border-color:var(--electric); box-shadow:0 8px 22px rgba(58,123,255,.3); }
+.tl-node.p3 .tl-dot{ border-color:var(--purple);   box-shadow:var(--glow-purple); }
+.tl-node.p4 .tl-dot{ border-color:var(--pink);     box-shadow:0 8px 22px rgba(226,76,196,.3); }
+.tl-node.p5 .tl-dot{ border-color:var(--orange);   box-shadow:var(--glow-orange); }
+.tl-label{ font-size:11px; font-weight:800; color:var(--muted); text-align:center; }
+.tl-node.done .tl-dot{ background:var(--grad-teal); color:#04121a; border-color:transparent; }
+
+/* ------------------------------------------------------------
+   10. FORMS
+   ------------------------------------------------------------ */
+label{ display:block; font-size:13.5px; font-weight:800; margin:14px 0 7px; color:var(--text); }
+input, textarea, select{
+  width:100%; border:1.5px solid var(--line); border-radius:var(--r-sm);
+  padding:13px 14px; font-family:var(--font); font-size:15px;
+  background:var(--panel-2); color:var(--text); min-height:48px;
+}
+input::placeholder, textarea::placeholder{ color:var(--faint); }
+textarea{ min-height:104px; resize:vertical; }
+input:focus, textarea:focus, select:focus{
+  outline:none; border-color:var(--teal);
+  box-shadow:0 0 0 4px rgba(18,199,206,.14);
+}
+
+/* Toggle */
+.toggle{ position:relative; width:52px; height:30px; display:inline-block; }
+.toggle input{ opacity:0; width:0; height:0; position:absolute; }
+.toggle .track{ position:absolute; inset:0; border-radius:var(--r-pill); background:var(--panel-2); border:1px solid var(--line); transition:.2s; }
+.toggle .knob{ position:absolute; top:3px; left:3px; width:24px; height:24px; border-radius:50%; background:var(--faint); transition:.2s; }
+.toggle input:checked + .track{ background:var(--grad-teal); border-color:transparent; }
+.toggle input:checked + .track + .knob,
+.toggle input:checked ~ .knob{ transform:translateX(22px); background:#fff; }
+
+/* ------------------------------------------------------------
+   11. BOTTOM NAV (fixed, glass, safe-area aware)
+   ------------------------------------------------------------ */
+.bottom-nav{
+  position:fixed; left:50%; transform:translateX(-50%); bottom:0;
+  width:100%; max-width:var(--maxw);
+  height:calc(var(--nav-h) + env(safe-area-inset-bottom));
+  padding-bottom:env(safe-area-inset-bottom);
+  display:grid; grid-template-columns:repeat(5,1fr); z-index:120;
+  background:rgba(12,15,26,.86);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--line-soft);
+}
+.nav-item{
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+  color:var(--faint); font-size:11px; font-weight:700; cursor:pointer;
+}
+.nav-item .ico{ font-size:20px; line-height:1; }
+.nav-item.active{ color:var(--teal); }
+
+/* ------------------------------------------------------------
+   12. UTILITIES
+   ------------------------------------------------------------ */
+.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.stack{ display:flex; flex-direction:column; gap:12px; }
+.row{ display:flex; align-items:center; gap:12px; }
+.text-muted{ color:var(--muted); }
+.text-center{ text-align:center; }
+@media (max-width:560px){
+  .grid-3{ grid-template-columns:1fr 1fr; }
+}
+
+/* ------------------------------------------------------------
+   13. MOTION (respect reduced-motion)
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion:reduce){
+  *{ transition:none !important; animation:none !important; }
+}
