@@ -10,21 +10,12 @@
         .app-layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
         
         /* --- SIDEBAR --- */
-        .sidebar {
-            background-color: var(--sidebar-bg); border-right: 1px solid var(--border-light);
-            padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between;
-        }
+        .sidebar { background-color: var(--sidebar-bg); border-right: 1px solid var(--border-light); padding: 32px 24px; display: flex; flex-direction: column; justify-content: space-between; }
         .sidebar-brand img { max-width: 150px; margin-bottom: 40px; }
         .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .sidebar-menu a {
-            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
-            border-radius: var(--radius-input); color: var(--text-muted); font-weight: 500;
-            transition: var(--transition);
-        }
+        .sidebar-menu a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--radius-input); color: var(--text-muted); font-weight: 500; transition: var(--transition); }
         .sidebar-menu a img { width: 24px; height: 24px; object-fit: contain; }
-        .sidebar-menu li.active a, .sidebar-menu a:hover {
-            background-color: rgba(61, 99, 255, 0.1); color: var(--text-main);
-        }
+        .sidebar-menu li.active a, .sidebar-menu a:hover { background-color: rgba(61, 99, 255, 0.1); color: var(--text-main); }
         .sidebar-footer { font-size: 11px; color: var(--locked-state); text-align: center; }
 
         /* --- MAIN WORKSPACE --- */
@@ -35,46 +26,27 @@
         .welcome-header h1 { font-size: 28px; margin-bottom: 4px; }
         .welcome-header p { color: var(--text-muted); font-size: 15px; }
 
-        /* 2. Start Here Card (Electric Blue Accent, Teal Button) */
+        /* 2. Start Here Card */
         .start-here-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-card);
-            border-left: 4px solid var(--phase-pitch); /* Electric Blue Accent */
-            border-top: 1px solid var(--border-light);
-            border-right: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-            padding: 24px 32px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 32px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            background: var(--card-bg); border-radius: var(--radius-card);
+            border-left: 4px solid var(--phase-pitch); border-top: 1px solid var(--border-light);
+            border-right: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
+            padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: all 0.4s ease;
         }
-        .start-here-tag {
-            display: inline-block; background: rgba(61, 99, 255, 0.15); color: var(--phase-pitch);
-            font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px;
-            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
-        }
+        .start-here-tag { display: inline-block; background: rgba(61, 99, 255, 0.15); color: var(--phase-pitch); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
         .start-here-content h2 { font-size: 22px; margin-bottom: 6px; }
         .start-here-content p { color: var(--text-muted); font-size: 14px; max-width: 500px; }
         
-        .btn-teal-accent {
-            background: var(--phase-empathy); color: var(--bg-main);
-            display: flex; align-items: center; gap: 8px; padding: 12px 24px;
-            border-radius: var(--radius-btn); font-weight: 600; transition: var(--transition);
-        }
-        .btn-teal-accent img { width: 18px; height: 18px; }
+        .btn-teal-accent { background: var(--phase-empathy); color: var(--bg-main); display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-btn); font-weight: 600; transition: var(--transition); }
+        .btn-teal-accent img { width: 18px; height: 18px; filter: brightness(0.2); }
         .btn-teal-accent:hover { background: #1bc2b1; box-shadow: 0 4px 15px rgba(33, 212, 194, 0.4); transform: translateY(-2px); }
 
-        /* 3. Current Phase Hero Card (Teal Empathy Theme) */
+        /* 3. Current Phase Hero Card */
         .current-phase-card {
             background: linear-gradient(135deg, var(--card-bg) 0%, rgba(33, 212, 194, 0.1) 100%);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-card);
-            padding: 32px;
-            margin-bottom: 32px;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border-light); border-radius: var(--radius-card);
+            padding: 32px; margin-bottom: 32px; position: relative; overflow: hidden;
         }
         .phase-tag { color: var(--phase-empathy); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px; }
         .current-phase-card h2 { font-size: 32px; margin-bottom: 24px; }
@@ -83,17 +55,11 @@
         .progress-text { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
         .progress-bar-bg { background: var(--bg-main); height: 8px; border-radius: 4px; overflow: hidden; }
         .progress-bar-fill { background: var(--phase-empathy); height: 100%; width: 60%; border-radius: 4px; box-shadow: 0 0 10px rgba(33, 212, 194, 0.5); }
-        
-        /* Large 3D Icon floating on the right */
         .phase-asset { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); width: 120px; opacity: 0.9; }
 
         /* 4. Quick Actions Grid */
         .quick-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 40px; }
-        .action-btn {
-            background: var(--card-bg); border: 1px solid var(--border-light);
-            padding: 16px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between;
-            color: var(--text-main); font-weight: 500; transition: var(--transition); cursor: pointer;
-        }
+        .action-btn { background: var(--card-bg); border: 1px solid var(--border-light); padding: 16px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; color: var(--text-main); font-weight: 500; transition: var(--transition); cursor: pointer; }
         .action-btn:hover { background: var(--sidebar-bg); border-color: var(--phase-pitch); }
         .action-left { display: flex; align-items: center; gap: 12px; }
         .action-left img { width: 32px; height: 32px; }
@@ -101,11 +67,8 @@
 
         /* 5. Templates List */
         .section-title { font-size: 13px; color: var(--locked-state); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-        .template-list { display: flex; flex-direction: column; gap: 12px; }
-        .template-item {
-            background: var(--card-bg); border: 1px solid var(--border-light);
-            padding: 16px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between;
-        }
+        .template-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+        .template-item { background: var(--card-bg); border: 1px solid var(--border-light); padding: 16px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; }
         .template-info { display: flex; align-items: center; gap: 16px; }
         .t-badge { background: var(--bg-main); color: var(--text-main); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; border: 1px solid var(--border-light); }
         .t-badge.active { background: rgba(33, 212, 194, 0.1); color: var(--phase-empathy); border-color: rgba(33, 212, 194, 0.3); }
@@ -114,7 +77,25 @@
         .dot.teal { background: var(--phase-empathy); box-shadow: 0 0 5px var(--phase-empathy); }
         .dot.grey { background: var(--locked-state); }
 
-        /* Bottom Nav for Mobile */
+        /* 6. DT Journey Progress */
+        .journey-tracker { background: var(--card-bg); border: 1px solid var(--border-light); padding: 24px; border-radius: var(--radius-card); margin-bottom: 40px; }
+        .journey-nodes { display: flex; justify-content: space-between; align-items: center; position: relative; padding: 0 10px; }
+        /* The connecting line */
+        .journey-nodes::before { content: ''; position: absolute; top: 50%; left: 20px; right: 20px; height: 2px; background: var(--border-light); z-index: 1; transform: translateY(-50%); }
+        .node { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-main); border: 2px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--locked-state); z-index: 2; position: relative; }
+        .node.active { border-color: var(--phase-empathy); color: var(--phase-empathy); box-shadow: 0 0 15px rgba(33, 212, 194, 0.3); }
+        
+        /* 7. AI DT Buddy Teaser */
+        .ai-buddy-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(107, 77, 255, 0.1) 100%);
+            border: 1px solid var(--border-light); border-radius: var(--radius-card);
+            padding: 24px; display: flex; align-items: center; gap: 20px;
+        }
+        .ai-buddy-card img { width: 50px; height: 50px; }
+        .ai-buddy-text h3 { font-size: 16px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .ai-buddy-text p { font-size: 13px; color: var(--text-muted); }
+
+        /* 8. Bottom Nav for Mobile */
         .mobile-nav { display: none; }
 
         @media (max-width: 992px) {
@@ -122,7 +103,7 @@
             .sidebar { display: none; }
             .main-content { padding: 24px 20px 100px 20px; }
             .start-here-card { flex-direction: column; text-align: left; align-items: flex-start; gap: 20px; }
-            .phase-asset { opacity: 0.2; right: -20px; width: 150px; } /* Fade to background on mobile */
+            .phase-asset { opacity: 0.2; right: -20px; width: 150px; }
             .quick-actions { grid-template-columns: 1fr; }
             .mobile-nav {
                 display: flex; position: fixed; bottom: 0; left: 0; width: 100%;
@@ -144,18 +125,10 @@
                     <img src="assets/brand/logo-full.png" alt="Smart DT Guide" onerror="this.style.display='none';">
                 </div>
                 <ul class="sidebar-menu">
-                    <li class="active">
-                        <a href="dashboard.html"><img src="assets/navigation/nav-home.png" alt="Home"> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="assets/navigation/nav-journey.png" alt="Journey"> DT Journey</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="assets/navigation/nav-templates.png" alt="Templates"> Templates</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="assets/navigation/nav-profile.png" alt="Profile"> My Profile</a>
-                    </li>
+                    <li class="active"><a href="dashboard.html"><img src="assets/navigation/nav-home.png" alt="Home"> Dashboard</a></li>
+                    <li><a href="#"><img src="assets/navigation/nav-journey.png" alt="Journey"> DT Journey</a></li>
+                    <li><a href="#"><img src="assets/navigation/nav-templates.png" alt="Templates"> Templates</a></li>
+                    <li><a href="#"><img src="assets/navigation/nav-profile.png" alt="Profile"> My Profile</a></li>
                 </ul>
             </div>
             <div class="sidebar-footer">CAMP21 Design System</div>
@@ -178,7 +151,7 @@
                     <p>Understand CAMP21, the Design Thinking flow, and how to use this guide effectively.</p>
                 </div>
                 <a href="intro-dt.html" class="btn-teal-accent">
-                    Begin <img src="assets/icons/next.png" alt="Next">
+                    Begin <img src="assets/icons/next.png" alt="Next" onerror="this.style.display='none';">
                 </a>
             </div>
 
@@ -199,38 +172,25 @@
                 
                 <a href="#" class="btn btn-outline" style="background: var(--bg-main);">Continue Phase →</a>
                 
-                <!-- 3D Asset for Phase 1 -->
                 <img src="assets/phases/empathise.png" alt="Empathise" class="phase-asset" onerror="this.style.display='none';">
             </div>
 
             <!-- 4. Quick Actions -->
             <div class="quick-actions">
                 <div class="action-btn">
-                    <div class="action-left">
-                        <img src="assets/icons/my-submissions.png" alt="Submissions" onerror="this.style.display='none';">
-                        <span>My Submissions</span>
-                    </div>
+                    <div class="action-left"><img src="assets/icons/my-submissions.png" alt="Submissions" onerror="this.style.display='none';"><span>My Submissions</span></div>
                     <span class="arrow-icon">→</span>
                 </div>
                 <div class="action-btn">
-                    <div class="action-left">
-                        <img src="assets/icons/test.png" alt="Quiz" onerror="this.style.display='none';">
-                        <span>Phase Quiz</span>
-                    </div>
+                    <div class="action-left"><img src="assets/icons/test.png" alt="Quiz" onerror="this.style.display='none';"><span>Phase Quiz</span></div>
                     <span class="arrow-icon">→</span>
                 </div>
                 <div class="action-btn">
-                    <div class="action-left">
-                        <img src="assets/icons/badges.png" alt="Badges" onerror="this.style.display='none';">
-                        <span>My Badges</span>
-                    </div>
+                    <div class="action-left"><img src="assets/icons/badges.png" alt="Badges" onerror="this.style.display='none';"><span>My Badges</span></div>
                     <span class="arrow-icon">→</span>
                 </div>
                 <div class="action-btn">
-                    <div class="action-left">
-                        <img src="assets/icons/print-pdf.png" alt="PDF" onerror="this.style.display='none';">
-                        <span>Print PDF</span>
-                    </div>
+                    <div class="action-left"><img src="assets/icons/print-pdf.png" alt="PDF" onerror="this.style.display='none';"><span>Print PDF</span></div>
                     <span class="arrow-icon">→</span>
                 </div>
             </div>
@@ -239,38 +199,43 @@
             <h3 class="section-title">Templates in this phase</h3>
             <div class="template-list">
                 <a href="#" class="template-item">
-                    <div class="template-info">
-                        <span class="t-badge active">T01</span>
-                        <span class="t-name">POEMS Observation <span class="dot teal"></span></span>
-                    </div>
+                    <div class="template-info"><span class="t-badge active">T01</span><span class="t-name">POEMS Observation <span class="dot teal"></span></span></div>
                     <span class="arrow-icon">→</span>
                 </a>
                 <a href="#" class="template-item">
-                    <div class="template-info">
-                        <span class="t-badge active">T02</span>
-                        <span class="t-name">Interview Guide <span class="dot teal"></span></span>
-                    </div>
+                    <div class="template-info"><span class="t-badge active">T02</span><span class="t-name">Interview Guide <span class="dot teal"></span></span></div>
                     <span class="arrow-icon">→</span>
                 </a>
                 <a href="#" class="template-item">
-                    <div class="template-info">
-                        <span class="t-badge">T03</span>
-                        <span class="t-name" style="color: var(--text-muted);">Audio Transcription <span class="dot grey"></span></span>
-                    </div>
-                    <img src="assets/status/locked.png" alt="Locked" style="width: 16px; height: 16px;">
+                    <div class="template-info"><span class="t-badge">T03</span><span class="t-name" style="color: var(--text-muted);">Audio Transcription <span class="dot grey"></span></span></div>
+                    <img src="assets/status/locked.png" alt="Locked" style="width: 16px; height: 16px;" onerror="this.style.display='none';">
                 </a>
-                <a href="#" class="template-item">
-                    <div class="template-info">
-                        <span class="t-badge">T04</span>
-                        <span class="t-name" style="color: var(--text-muted);">Empathy Map <span class="dot grey"></span></span>
-                    </div>
-                    <img src="assets/status/locked.png" alt="Locked" style="width: 16px; height: 16px;">
-                </a>
+            </div>
+
+            <!-- 6. DT Journey Progress -->
+            <h3 class="section-title">Sprint Progress</h3>
+            <div class="journey-tracker">
+                <div class="journey-nodes">
+                    <div class="node active">01</div>
+                    <div class="node">02</div>
+                    <div class="node">03</div>
+                    <div class="node">04</div>
+                    <div class="node">05</div>
+                </div>
+            </div>
+
+            <!-- 7. AI DT Buddy Teaser -->
+            <div class="ai-buddy-card">
+                <img src="assets/status/ai-dt.png" alt="AI Buddy" onerror="this.style.display='none';">
+                <div class="ai-buddy-text">
+                    <h3>AI DT Buddy <span style="font-size: 16px;">✨</span></h3>
+                    <p>Complete the Empathy templates to unlock AI-powered insights about your users.</p>
+                </div>
             </div>
 
         </main>
 
-        <!-- BOTTOM NAV (Mobile Only) -->
+        <!-- 8. BOTTOM NAV (Mobile Only) -->
         <nav class="mobile-nav">
             <a href="dashboard.html" class="active"><img src="assets/navigation/nav-home.png" alt="Home"></a>
             <a href="#"><img src="assets/navigation/nav-journey.png" alt="Journey"></a>
@@ -279,5 +244,8 @@
         </nav>
 
     </div>
+
+    <!-- SCRIPT LINK ADDED HERE -->
+    <script src="js/smartdt.js"></script>
 </body>
 </html>
