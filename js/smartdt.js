@@ -1,5 +1,6 @@
 /* =========================================================
    SMART DT GUIDE: PROTOTYPE INTERACTION ENGINE (CAMP21)
+   File: js/smartdt.js
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,20 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ---------------------------------------------------------
        2. ONBOARDING STATE MANAGEMENT (INTRO -> DASHBOARD)
-       Remembers if the student has completed the Introduction page.
+       Remembers if the student has completed the intro-dt.html page.
        --------------------------------------------------------- */
     const unlockPhaseBtn = document.querySelector('.btn-start-journey');
     
-    // If we are on the Intro page and click "Unlock Phase 01"
+    // If we are on the intro-dt.html page and click the unlock button
     if (unlockPhaseBtn) {
-        unlockPhaseBtn.addEventListener('click', () => {
-            localStorage.setItem('camp21_intro_completed', 'true');
+        unlockPhaseBtn.addEventListener('click', (e) => {
+            // Stop the default click action temporarily
+            e.preventDefault(); 
+            
+            // Save the exact page name key to confirm completion
+            localStorage.setItem('intro_dt_completed', 'true');
+            
+            // Safely route the student to the dashboard
+            window.location.href = 'dashboard.html';
         });
     }
 
-    // If we are on the Dashboard page, check if the intro is completed
+    // If we are on the dashboard.html page, check if intro-dt is completed
     const startHereCard = document.querySelector('.start-here-card');
-    if (startHereCard && localStorage.getItem('camp21_intro_completed') === 'true') {
+    if (startHereCard && localStorage.getItem('intro_dt_completed') === 'true') {
         
         // Morph the giant "Start Here" card into a minimal "Review" strip
         startHereCard.style.padding = '16px 24px';
