@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Smart DT Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .auth-card {
+            background: var(--surface-card); width: 100%; max-width: 480px; padding: 48px 40px; 
+            border-radius: var(--radius-card); box-shadow: var(--shadow-md); text-align: center; 
+            border: 1px solid var(--border-dark);
+        }
+        .auth-card img { max-width: 180px; margin-bottom: 24px; }
+        .auth-card h2 { margin-bottom: 8px; }
+        .auth-card p { color: var(--text-muted); margin-bottom: 32px; font-size: 15px; }
+        .auth-footer { margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        .auth-footer a { color: var(--teal); font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <img src="assets/brand/logo-full.png" alt="Smart DT Guide Logo" onerror="this.style.display='none';">
+            <h2>Join the Workspace</h2>
+            <p>Create an account to access your CAMP21 templates.</p>
+            
+            <form action="dashboard.html" method="GET">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" placeholder="e.g. Ahmad bin Ali" required>
+                </div>
+                <div class="form-group">
+                    <label>Student Email</label>
+                    <input type="email" class="form-control" placeholder="student@example.edu.my" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">Sign Up</button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Log In</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

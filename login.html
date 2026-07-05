@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | Smart DT Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .auth-card {
+            background: var(--surface-card); width: 100%; max-width: 400px; padding: 48px 40px; 
+            border-radius: var(--radius-card); box-shadow: var(--shadow-md); text-align: center; 
+            border: 1px solid var(--border-dark);
+        }
+        .auth-card img { max-width: 180px; margin-bottom: 24px; }
+        .auth-card h2 { margin-bottom: 8px; }
+        .auth-card p { color: var(--text-muted); margin-bottom: 32px; font-size: 15px; }
+        .auth-footer { margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+        .auth-footer a { color: var(--teal); font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <img src="assets/brand/logo-full.png" alt="Smart DT Guide Logo" onerror="this.style.display='none';">
+            <h2>Welcome Back</h2>
+            <p>Log in to continue your CAMP21 journey.</p>
+            
+            <form action="dashboard.html" method="GET">
+                <div class="form-group">
+                    <label>Student Email</label>
+                    <input type="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">Log In</button>
+            </form>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="register.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

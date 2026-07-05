@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang | Smart DT Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .welcome-container {
+            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            padding: 40px 24px; text-align: center;
+            background: radial-gradient(circle at top right, rgba(37, 108, 255, 0.1), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(25, 211, 197, 0.05), transparent 50%);
+        }
+        .welcome-logo img { max-width: 220px; height: auto; margin-bottom: 32px; }
+        .welcome-hero-image {
+            width: 100%; max-width: 680px; height: 320px; object-fit: cover; object-position: center 30%; 
+            margin-bottom: 40px; border-radius: var(--radius-card); box-shadow: var(--shadow-md); 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .welcome-text h1 { font-size: 36px; margin-bottom: 12px; }
+        .welcome-text h1 span { color: var(--amber-yellow); }
+        .welcome-text p { color: var(--text-muted); font-size: 16px; max-width: 540px; margin: 0 auto 40px auto; line-height: 1.6; }
+        .action-buttons { display: flex; gap: 16px; width: 100%; max-width: 400px; flex-direction: column; }
+        
+        @media (min-width: 576px) {
+            .action-buttons { flex-direction: row; max-width: 450px; }
+            .action-buttons .btn { flex: 1; }
+            .welcome-text h1 { font-size: 42px; }
+            .welcome-hero-image { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <main class="welcome-container">
+        <div class="welcome-logo">
+            <img src="assets/brand/logo-full.png" alt="Smart DT Guide" onerror="this.style.display='none';">
+        </div>
+
+        <img src="assets/image/welcome-hero.png" alt="CAMP21 Workshop Team" class="welcome-hero-image" onerror="this.style.display='none';">
+
+        <div class="welcome-text">
+            <h1>Selamat Datang to <span>Smart DT Guide</span></h1>
+            <p>Empower your structural design and engineering projects with guided empathy frameworks and real-world collaboration templates.</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="register.html" class="btn btn-primary">Create Account</a>
+            <a href="login.html" class="btn btn-outline">Log In</a>
+        </div>
+    </main>
+</body>
+</html>
