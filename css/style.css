@@ -1,0 +1,144 @@
+/* =========================================================
+   SMART DT GUIDE: MASTER DESIGN SYSTEM (CAMP21 SPRINT)
+   ========================================================= */
+
+:root {
+    /* --- Global Base Colors --- */
+    --bg-main: #070B14;       /* Deep Midnight Navy - Main App Background */
+    --sidebar-bg: #121A2F;    /* Dark Indigo - Sidebar & Bottom Nav */
+    --card-bg: #101722;       /* Charcoal Navy - Phase Cards */
+    --border-light: #2A3552;  /* Indigo Grey - Soft Card Borders */
+    
+    /* --- Typography Colors --- */
+    --text-main: #F8FAFF;     /* Soft White - Main Text */
+    --text-muted: #B7C0D4;    /* Cool Grey - Secondary Text */
+    
+    /* --- UI States --- */
+    --locked-state: #566070;  /* Muted Grey - Disabled/Locked Templates */
+    
+    /* --- Phase Accent Colors (The Vibrant Core) --- */
+    --phase-empathy: #21D4C2; /* Phase 1: Vibrant Teal */
+    --phase-define: #6B4DFF;  /* Phase 2: Neon Violet */
+    --phase-ideate: #FF4FCB;  /* Phase 3: Hot Magenta */
+    --phase-prototype: #FFC83D; /* Phase 4: Vibrant Yellow */
+    --phase-test: #8DFF3F;    /* Phase 5: Fluorescent Green */
+    --phase-pitch: #3D63FF;   /* Final Pitch: Electric Blue */
+
+    /* --- Typography Families --- */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+    
+    /* --- Component Variables --- */
+    --radius-btn: 18px;
+    --radius-card: 20px;
+    --radius-input: 12px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================================
+   GLOBAL RESETS & STRUCTURE
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-secondary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, .brand-font {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+/* =========================================================
+   GLOBAL BUTTON SYSTEM
+   ========================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: var(--radius-btn);
+    font-size: 15px;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    text-align: center;
+}
+
+/* Default Primary Button (Uses Electric Blue) */
+.btn-primary { 
+    background-color: var(--phase-pitch); 
+    color: #FFF; 
+}
+.btn-primary:hover { 
+    background-color: #2b4acc; 
+    box-shadow: 0 4px 15px rgba(61, 99, 255, 0.4); 
+    transform: translateY(-2px); 
+}
+
+/* Transparent Outline Button */
+.btn-outline { 
+    background-color: transparent; 
+    color: var(--text-main); 
+    border: 2px solid var(--border-light); 
+}
+.btn-outline:hover { 
+    border-color: var(--text-main); 
+}
+
+/* =========================================================
+   FORM ELEMENTS (For Login / Register)
+   ========================================================= */
+.form-group { 
+    margin-bottom: 20px; 
+    text-align: left; 
+}
+
+.form-group label { 
+    display: block; 
+    font-size: 14px; 
+    font-weight: 500; 
+    margin-bottom: 8px; 
+    color: var(--text-main); 
+}
+
+.form-control {
+    width: 100%; 
+    padding: 14px 16px; 
+    border-radius: var(--radius-input);
+    background-color: var(--sidebar-bg); 
+    border: 1px solid var(--border-light); 
+    color: var(--text-main); 
+    font-family: var(--font-secondary); 
+    font-size: 15px;
+    transition: var(--transition);
+}
+
+.form-control::placeholder { 
+    color: var(--locked-state); 
+}
+
+.form-control:focus { 
+    outline: none; 
+    border-color: var(--phase-pitch); 
+    background-color: var(--card-bg); 
+}
