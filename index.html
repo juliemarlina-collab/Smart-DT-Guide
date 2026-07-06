@@ -4,51 +4,432 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome | Smart DT Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .welcome-container {
-            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            padding: 40px 24px; text-align: center;
-            background: radial-gradient(circle at top right, rgba(37, 108, 255, 0.1), transparent 50%),
-                        radial-gradient(circle at bottom left, rgba(25, 211, 197, 0.05), transparent 50%);
+        :root {
+            --welcome-bg: #050816;
+            --welcome-card: rgba(16, 23, 34, 0.72);
+            --electric-blue: #3D63FF;
+            --neon-violet: #6B4DFF;
+            --hot-magenta: #FF4FCB;
+            --vibrant-teal: #21D4C2;
+            --vibrant-yellow: #FFC83D;
+            --fluoro-green: #8DFF3F;
         }
-        .welcome-logo img { max-width: 220px; height: auto; margin-bottom: 32px; }
-        .welcome-hero-image {
-            width: 100%; max-width: 680px; height: 320px; object-fit: cover; object-position: center 30%; 
-            margin-bottom: 40px; border-radius: var(--radius-card); box-shadow: var(--shadow-md); 
-            border: 1px solid rgba(255,255,255,0.1);
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at 82% 12%, rgba(107,77,255,.24), transparent 32%),
+                radial-gradient(circle at 18% 42%, rgba(33,212,194,.16), transparent 30%),
+                linear-gradient(180deg, #030611 0%, #070B14 48%, #02030A 100%);
         }
-        .welcome-text h1 { font-size: 36px; margin-bottom: 12px; }
-        .welcome-text h1 span { color: var(--amber-yellow); }
-        .welcome-text p { color: var(--text-muted); font-size: 16px; max-width: 540px; margin: 0 auto 40px auto; line-height: 1.6; }
-        .action-buttons { display: flex; gap: 16px; width: 100%; max-width: 400px; flex-direction: column; }
-        
-        @media (min-width: 576px) {
-            .action-buttons { flex-direction: row; max-width: 450px; }
-            .action-buttons .btn { flex: 1; }
-            .welcome-text h1 { font-size: 42px; }
-            .welcome-hero-image { height: 400px; }
+
+        .welcome-stage {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            padding: 18px 18px 26px;
+            isolation: isolate;
+        }
+
+        .welcome-stage::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.22) 1px, transparent 1px),
+                radial-gradient(circle, rgba(61,99,255,.24) 1px, transparent 1px);
+            background-size: 120px 120px, 72px 72px;
+            background-position: 12px 30px, 42px 82px;
+            opacity: .28;
+            animation: drift 18s linear infinite;
+            z-index: -3;
+        }
+
+        .welcome-stage::after {
+            content: "";
+            position: absolute;
+            inset: auto -20% -12% -20%;
+            height: 52vh;
+            background: radial-gradient(ellipse at center, rgba(107,77,255,.18), transparent 68%);
+            filter: blur(8px);
+            z-index: -2;
+        }
+
+        @keyframes drift {
+            from { transform: translate3d(0,0,0); }
+            to { transform: translate3d(-70px, 70px, 0); }
+        }
+
+        .phone-canvas {
+            position: relative;
+            width: min(100%, 430px);
+            min-height: calc(100vh - 44px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px 6px 0;
+        }
+
+        .top-actions {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 44px;
+        }
+
+        .mini-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.05);
+            backdrop-filter: blur(16px);
+            border-radius: 18px;
+            color: #F8FAFF;
+            font-weight: 700;
+            letter-spacing: .01em;
+        }
+
+        .mini-brand-mark {
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--hot-magenta));
+            box-shadow: 0 0 28px rgba(61,99,255,.45);
+            font-size: 12px;
+        }
+
+        .intro-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #DCE4FF;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 10px 12px;
+            border: 1px solid rgba(107,77,255,.42);
+            border-radius: 999px;
+            background: rgba(18,26,47,.54);
+            backdrop-filter: blur(12px);
+        }
+
+        .portal-world {
+            position: relative;
+            height: 52vh;
+            min-height: 390px;
+            margin-top: 4px;
+            transform-style: preserve-3d;
+        }
+
+        .portal {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 172px;
+            height: 172px;
+            border-radius: 50%;
+            border: 10px solid transparent;
+            background:
+                radial-gradient(circle at center, rgba(5,8,22,.92) 0 48%, transparent 49%),
+                conic-gradient(from 20deg, #3D63FF, #6B4DFF, #B025FF, #3D63FF);
+            box-shadow:
+                0 0 38px rgba(61,99,255,.72),
+                0 0 72px rgba(107,77,255,.45),
+                inset 0 0 34px rgba(61,99,255,.22);
+            animation: portalPulse 2.8s ease-in-out infinite;
+        }
+
+        .portal::before,
+        .portal::after {
+            content: "";
+            position: absolute;
+            inset: 22px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 50%;
+            box-shadow: inset 0 0 18px rgba(107,77,255,.35);
+        }
+
+        .portal::after {
+            inset: 48px;
+            border-color: rgba(61,99,255,.20);
+        }
+
+        @keyframes portalPulse {
+            0%, 100% { transform: scale(1); filter: saturate(1); }
+            50% { transform: scale(1.035); filter: saturate(1.35); }
+        }
+
+        .path-line {
+            position: absolute;
+            left: 34px;
+            right: 94px;
+            top: 124px;
+            height: 270px;
+            border-top: 2px solid rgba(61,99,255,.36);
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-18deg);
+            filter: drop-shadow(0 0 12px rgba(61,99,255,.28));
+            opacity: .65;
+        }
+
+        .dt-tile {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            width: 126px;
+            height: 86px;
+            border-radius: 28px;
+            box-shadow: 0 30px 50px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.25);
+            transform: rotateX(58deg) rotateZ(-10deg);
+            animation: floatTile 4.5s ease-in-out infinite;
+        }
+
+        .dt-tile svg {
+            width: 42px;
+            height: 42px;
+            stroke: rgba(255,255,255,.92);
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,.25));
+        }
+
+        @keyframes floatTile {
+            0%, 100% { translate: 0 0; }
+            50% { translate: 0 -9px; }
+        }
+
+        .tile-empathise {
+            left: 16px;
+            bottom: 24px;
+            background: linear-gradient(135deg, rgba(33,212,194,.88), rgba(61,99,255,.46));
+            box-shadow: 0 0 34px rgba(33,212,194,.30), 0 30px 50px rgba(0,0,0,.46);
+            animation-delay: .05s;
+        }
+
+        .tile-define {
+            left: 112px;
+            bottom: 124px;
+            background: linear-gradient(135deg, rgba(107,77,255,.95), rgba(85,34,210,.88));
+            box-shadow: 0 0 34px rgba(107,77,255,.34), 0 30px 50px rgba(0,0,0,.46);
+            animation-delay: .5s;
+        }
+
+        .tile-ideate {
+            right: 96px;
+            bottom: 198px;
+            background: linear-gradient(135deg, rgba(255,79,203,.95), rgba(255,79,120,.86));
+            box-shadow: 0 0 34px rgba(255,79,203,.36), 0 30px 50px rgba(0,0,0,.46);
+            animation-delay: .9s;
+        }
+
+        .tile-prototype {
+            right: 64px;
+            top: 166px;
+            background: linear-gradient(135deg, rgba(255,200,61,.98), rgba(255,143,42,.88));
+            box-shadow: 0 0 34px rgba(255,200,61,.38), 0 30px 50px rgba(0,0,0,.46);
+            animation-delay: 1.3s;
+        }
+
+        .tile-test {
+            right: 44px;
+            top: 88px;
+            width: 108px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(141,255,63,.95), rgba(33,212,194,.86));
+            box-shadow: 0 0 34px rgba(141,255,63,.32), 0 30px 50px rgba(0,0,0,.46);
+            animation-delay: 1.7s;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(.1px);
+            opacity: .82;
+            animation: orbDrift 7s ease-in-out infinite alternate;
+        }
+
+        .orb-one { width: 18px; height: 18px; background: var(--vibrant-yellow); left: 42px; top: 150px; box-shadow: 0 0 24px rgba(255,200,61,.75); }
+        .orb-two { width: 12px; height: 12px; background: var(--hot-magenta); right: 18px; top: 240px; box-shadow: 0 0 20px rgba(255,79,203,.7); animation-delay: 1.4s; }
+        .orb-three { width: 14px; height: 14px; background: var(--vibrant-teal); left: 210px; top: 82px; box-shadow: 0 0 18px rgba(33,212,194,.7); animation-delay: .9s; }
+
+        @keyframes orbDrift {
+            from { transform: translate3d(0,0,0); }
+            to { transform: translate3d(14px,-18px,0); }
+        }
+
+        .welcome-copy {
+            position: relative;
+            z-index: 10;
+            padding: 0 4px 0;
+        }
+
+        .brand-lockup {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .brand-lockup img {
+            width: min(78%, 315px);
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 24px rgba(61,99,255,.25));
+        }
+
+        .welcome-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(54px, 16vw, 78px);
+            line-height: .92;
+            letter-spacing: -0.075em;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .welcome-subtitle {
+            color: rgba(248,250,255,.72);
+            font-size: 17px;
+            line-height: 1.45;
+            margin-bottom: 24px;
+            max-width: 330px;
+        }
+
+        .cta-stack {
+            display: grid;
+            gap: 14px;
+            padding-bottom: 22px;
+        }
+
+        .welcome-btn {
+            min-height: 62px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-weight: 800;
+            letter-spacing: .02em;
+            font-size: 18px;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .welcome-btn:hover { transform: translateY(-2px); }
+
+        .btn-glow {
+            color: #fff;
+            background: linear-gradient(105deg, #0AA8FF, var(--neon-violet), #B822FF);
+            box-shadow: 0 18px 44px rgba(61,99,255,.35), 0 0 28px rgba(255,79,203,.20);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+            transform: translateX(-110%);
+            animation: sheen 3.2s ease-in-out infinite;
+        }
+
+        @keyframes sheen {
+            0%, 42% { transform: translateX(-110%); }
+            72%, 100% { transform: translateX(110%); }
+        }
+
+        .btn-line {
+            border: 1px solid rgba(107,77,255,.62);
+            background: rgba(255,255,255,.025);
+            color: #F8FAFF;
+        }
+
+        .link-intro {
+            justify-self: center;
+            color: rgba(184,194,224,.92);
+            font-weight: 700;
+            letter-spacing: .02em;
+            padding: 8px 12px;
+        }
+
+        .link-intro span {
+            color: var(--neon-violet);
+            margin-right: 8px;
+        }
+
+        @media (max-height: 760px) {
+            .portal-world { min-height: 330px; height: 45vh; }
+            .welcome-title { font-size: 54px; }
+            .brand-lockup img { width: 240px; }
+            .dt-tile { transform: scale(.86) rotateX(58deg) rotateZ(-10deg); }
+            .portal { transform: scale(.86); transform-origin: top right; }
+            .tile-test { top: 84px; }
         }
     </style>
 </head>
 <body>
-    <main class="welcome-container">
-        <div class="welcome-logo">
-            <img src="assets/brand/logo-full.png" alt="Smart DT Guide" onerror="this.style.display='none';">
-        </div>
+    <main class="welcome-stage">
+        <section class="phone-canvas" aria-label="Smart DT Guide welcome screen">
+            <header class="top-actions">
+                <div class="mini-brand" aria-label="Smart DT Guide">
+                    <span class="mini-brand-mark">DT</span>
+                    <span>Smart DT</span>
+                </div>
+                <a class="intro-pill" href="intro-dt.html">Start Here →</a>
+            </header>
 
-        <img src="assets/image/welcome-hero.png" alt="CAMP21 Workshop Team" class="welcome-hero-image" onerror="this.style.display='none';">
+            <section class="portal-world" aria-hidden="true">
+                <div class="path-line"></div>
+                <div class="portal"></div>
+                <div class="orb orb-one"></div>
+                <div class="orb orb-two"></div>
+                <div class="orb orb-three"></div>
 
-        <div class="welcome-text">
-            <h1>Welcome to <span>Smart DT Guide</span></h1>
-            <p>Empower your structural design and engineering projects with guided empathy frameworks and real-world collaboration templates.</p>
-        </div>
+                <div class="dt-tile tile-empathise">
+                    <svg viewBox="0 0 48 48"><path d="M17 20c0-4 3-7 7-7s7 3 7 7c0 7-7 12-7 12s-7-5-7-12Z"/><path d="M13 35c3-4 7-6 11-6s8 2 11 6"/></svg>
+                </div>
+                <div class="dt-tile tile-define">
+                    <svg viewBox="0 0 48 48"><circle cx="22" cy="22" r="8"/><path d="M32 32l8 8"/><path d="M22 14v4M22 26v4M14 22h4M26 22h4"/></svg>
+                </div>
+                <div class="dt-tile tile-ideate">
+                    <svg viewBox="0 0 48 48"><path d="M18 34h12"/><path d="M20 39h8"/><path d="M15 22c0-6 4-10 9-10s9 4 9 10c0 4-2 6-4 9H19c-2-3-4-5-4-9Z"/><path d="M24 5v3M38 11l-2 2M10 11l2 2"/></svg>
+                </div>
+                <div class="dt-tile tile-prototype">
+                    <svg viewBox="0 0 48 48"><path d="M24 7l15 8-15 8-15-8 15-8Z"/><path d="M9 23l15 8 15-8"/><path d="M9 31l15 8 15-8"/></svg>
+                </div>
+                <div class="dt-tile tile-test">
+                    <svg viewBox="0 0 48 48"><path d="M14 25l7 7 14-17"/></svg>
+                </div>
+            </section>
 
-        <div class="action-buttons">
-            <a href="registration.html" class="btn btn-primary">Create Account</a>
-            <a href="login.html" class="btn btn-outline">Log In</a>
-        </div>
+            <section class="welcome-copy">
+                <div class="brand-lockup">
+                    <img src="assets/brand/logo-full.png" alt="Smart DT Guide" onerror="this.style.display='none';">
+                </div>
+                <h1 class="welcome-title">Enter the DT Journey</h1>
+                <p class="welcome-subtitle">A guided space for CAMP21 teams to observe, define, ideate, prototype and test with confidence.</p>
+
+                <div class="cta-stack">
+                    <a href="registration.html" class="welcome-btn btn-glow">Get Started <span>→</span></a>
+                    <a href="login.html" class="welcome-btn btn-line">Log In</a>
+                    <a href="intro-dt.html" class="link-intro"><span>▷</span>Introduction</a>
+                </div>
+            </section>
+        </section>
     </main>
 </body>
 </html>
